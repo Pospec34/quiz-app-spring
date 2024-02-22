@@ -1,10 +1,10 @@
--- Create Categories Table
+-- Creates Categories Table
 CREATE TABLE categories (
     category_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
 
--- Create SubCategories Table
+-- Creates SubCategories Table
 CREATE TABLE subcategories (
     subcategory_id SERIAL PRIMARY KEY,
     category_id INT NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE subcategories (
     FOREIGN KEY (category_id) REFERENCES categories (category_id)
 );
 
--- Create Questions Table
+-- Creates Questions Table
 CREATE TABLE questions (
     question_id SERIAL PRIMARY KEY,
     subcategory_id INT NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE questions (
     FOREIGN KEY (subcategory_id) REFERENCES subcategories (subcategory_id)
 );
 
--- Create Answers Table
+-- Creates Answers Table
 CREATE TABLE answers (
     answer_id SERIAL PRIMARY KEY,
     question_id INT NOT NULL,
