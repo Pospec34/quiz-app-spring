@@ -1,5 +1,6 @@
 package com.quiz.quizApp.controllers;
 
+import com.quiz.quizApp.dto.QuestionDTO;
 import com.quiz.quizApp.models.Question;
 import com.quiz.quizApp.service.QuestionService;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("/all")
-    public List<Question> getAllQuestions(){
+    public List<QuestionDTO> getAllQuestions(){
         return questionService.getAllQuestions();
     }
 }

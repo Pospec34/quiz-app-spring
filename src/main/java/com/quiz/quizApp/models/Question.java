@@ -26,5 +26,4 @@ public class Question {
     @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
-
 }
