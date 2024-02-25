@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @AllArgsConstructor
 public class QuestionService {
@@ -16,10 +16,10 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
 
-    public List<QuestionDTO> getAllQuestions(){
+    public List<QuestionDTO> getAllQuestions() {
         List<Question> questions = questionRepository.findAll();
         List<QuestionDTO> questionDTOs = new ArrayList<>();
-        for (Question question : questions){
+        for (Question question : questions) {
             questionDTOs.add(convertToDTO(question));
         }
         return questionDTOs;
@@ -30,9 +30,27 @@ public class QuestionService {
         dto.setCategory(question.getSubcategory().getCategory().getName());
         dto.setSubcategory(question.getSubcategory().getName());
         dto.setQuestion(question.getText());
-        dto.setCorrectAnswer(question.getAnswers().stream().filter(Answer::isCorrect).findFirst().map(Answer::getText).orElse(null));
-        dto.setWrongAnswers(question.getAnswers().stream().filter(answer -> !answer.isCorrect()).map(Answer::getText).collect(Collectors.toList()));
 
+        List<String> wrongAnswers = new ArrayList<>();
+        String correctAnswer = null;
+        for (Answer answer : question.getAnswers()) {
+            if (answer.isCorrect()) {
+                correctAnswer = answer.getText();
+            } else {
+                wrongAnswers.add(answer.getText());
+            }
+        }
+        dto.setCorrectAnswer(correctAnswer);
+        dto.setWrongAnswers(wrongAnswers);
         return dto;
+    }
+
+    public List<QuestionDTO> getQuestionsByCategory(String category) {
+        List<Question> questions = questionRepository.findAllBySubcategory_Category_NameIgnoreCase(category);
+        List<QuestionDTO> questionDTOS = new ArrayList<>();
+        for (Question question : questions){
+            questionDTOS.add(convertToDTO(question));
+        }
+        return questionDTOS;
     }
 }
