@@ -13,12 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class QuestionDTO {
+    private Long questionID;
     private String category;
     private String subcategory;
     private String question;
     private String correctAnswer;
     private List<String> wrongAnswers;
-
 
 }
 

@@ -1,15 +1,30 @@
 package com.quiz.quizApp.config;
 
+import com.quiz.quizApp.repository.CategoryRepository;
 import com.quiz.quizApp.repository.QuestionRepository;
+import com.quiz.quizApp.repository.SubcategoryRepository;
+import com.quiz.quizApp.service.CategoryService;
 import com.quiz.quizApp.service.QuestionService;
+import com.quiz.quizApp.service.SubcategoryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig{
+
     @Bean
     public QuestionService questionService(QuestionRepository questionRepository){
         return new QuestionService(questionRepository);
+    }
+
+    @Bean
+    public CategoryService categoryService(CategoryRepository categoryRepository){
+        return new CategoryService(categoryRepository);
+    }
+
+    @Bean
+    public SubcategoryService subcategoryService(SubcategoryRepository subcategoryRepository){
+        return new SubcategoryService(subcategoryRepository);
     }
 
 }
