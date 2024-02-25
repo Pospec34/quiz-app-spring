@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class SubcategoryService {
@@ -22,6 +23,16 @@ public class SubcategoryService {
             subcategoryDTOS.add(convertToDTO(subcategory));
         }
         return subcategoryDTOS;
+    }
+
+    public SubcategoryDTO getSubcategoryByID(Long id){
+        Optional<Subcategory> subcategoryOptional = subcategoryRepository.findById(id);
+
+        if (subcategoryOptional.isPresent()) {
+            return convertToDTO(subcategoryOptional.get());
+        } else {
+            return null;
+        }
     }
 
     private SubcategoryDTO convertToDTO(Subcategory subcategory) {

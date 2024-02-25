@@ -1,15 +1,13 @@
 package com.quiz.quizApp.service;
 
 import com.quiz.quizApp.dto.CategoryDTO;
-import com.quiz.quizApp.dto.QuestionDTO;
-import com.quiz.quizApp.models.Answer;
 import com.quiz.quizApp.models.Category;
-import com.quiz.quizApp.models.Question;
 import com.quiz.quizApp.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class CategoryService {
@@ -24,6 +22,16 @@ public class CategoryService {
             categoryDTOS.add(convertToDTO(category));
         }
         return categoryDTOS;
+    }
+
+    public CategoryDTO getCategoryByID(Long id){
+        Optional<Category> categoryOptional = categoryRepository.findById(id);
+
+        if (categoryOptional.isPresent()) {
+            return convertToDTO(categoryOptional.get());
+        } else {
+            return null;
+        }
     }
 
     private CategoryDTO convertToDTO(Category category) {
