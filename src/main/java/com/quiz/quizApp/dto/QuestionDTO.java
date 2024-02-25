@@ -17,8 +17,7 @@ public class QuestionDTO {
     private String subcategory;
     private String question;
     private String correctAnswer;
-    private String wrongAnswer1;
-    private String wrongAnswer2;
+    private List<String> wrongAnswers;
 
 
 }

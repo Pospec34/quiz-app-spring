@@ -11,4 +11,5 @@ public class AppConfig{
     public QuestionService questionService(QuestionRepository questionRepository){
         return new QuestionService(questionRepository);
     }
+
 }
