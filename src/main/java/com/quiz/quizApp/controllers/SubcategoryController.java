@@ -28,6 +28,4 @@ public class SubcategoryController {
         return subcategoryService.getSubcategoryByID(id);
     }
 
-
-
 }
