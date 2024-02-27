@@ -4,6 +4,7 @@ import com.quiz.quizApp.dto.QuestionDTO;
 import com.quiz.quizApp.models.Answer;
 import com.quiz.quizApp.models.Question;
 import com.quiz.quizApp.repository.QuestionRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -33,9 +34,11 @@ public class QuestionService {
         return questionDTOS;
     }
 
+    @Transactional
     public List<QuestionDTO> getQuestionsBySubcategoryId(Long subCategoryId){
         List<Question> questions = questionRepository.findAllBySubcategoryId(subCategoryId);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
+
 
         for (Question question : questions){
             questionDTOS.add(convertToDTO(question));
@@ -48,7 +51,7 @@ public class QuestionService {
         dto.setQuestionID(question.getId());
         dto.setCategory(question.getSubcategory().getCategory().getName());
         dto.setSubcategory(question.getSubcategory().getName());
-        dto.setQuestion(question.getText());
+        dto.setText(question.getText());
 
         List<String> wrongAnswers = new ArrayList<>();
         String correctAnswer = null;

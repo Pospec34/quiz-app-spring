@@ -1,5 +1,6 @@
 package com.quiz.quizApp.config;
 
+import com.quiz.quizApp.quizLogic.Quiz;
 import com.quiz.quizApp.quizSelectors.CategorySelector;
 import com.quiz.quizApp.quizSelectors.SubCategorySelector;
 import com.quiz.quizApp.repository.CategoryRepository;
@@ -37,8 +38,13 @@ public class AppConfig{
     }
 
     @Bean
-    public SubCategorySelector subCategorySelector(SubcategoryService subCategoryService){
-        return new SubCategorySelector(subCategoryService);
+    public Quiz quiz(QuestionService questionService){
+        return new Quiz(questionService);
+    }
+
+    @Bean
+    public SubCategorySelector subCategorySelector(SubcategoryService subCategoryService, Quiz quiz){
+        return new SubCategorySelector(subCategoryService, quiz);
     }
 
     @Bean

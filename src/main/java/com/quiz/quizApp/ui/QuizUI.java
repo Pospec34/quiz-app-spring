@@ -13,7 +13,7 @@ public class QuizUI {
 
     public void mainMenu(){
         while (true){
-            System.out.println("*****Welcome to QUIZ 3000*****");
+            System.out.println("\n*****Welcome to QUIZ 3000*****");
 
             System.out.println("1. Start quiz");
             System.out.println("2. Create a new quiz");
@@ -34,7 +34,6 @@ public class QuizUI {
                 default:
                     System.out.println("Invalid choice");
                     break;
-
             }
         }
     }
