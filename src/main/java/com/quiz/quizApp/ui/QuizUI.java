@@ -18,7 +18,7 @@ public class QuizUI {
             System.out.println("1. Start quiz");
             System.out.println("2. Create a new quiz");
             System.out.println("3. Quit");
-            System.out.println("Choose: ");
+            System.out.printf("Choose: ");
 
             String choice = scanner.nextLine();
             switch (choice){
