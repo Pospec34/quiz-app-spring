@@ -10,4 +10,8 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question, Long> {
    List<Question> findAllBySubcategory_Category_NameIgnoreCase(String categoryName);
 
+   List<Question> findAllBySubcategoryId(Long subCategoryId);
+
+
+
 }
