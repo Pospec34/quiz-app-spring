@@ -19,7 +19,6 @@ public class SubCategorySelector {
         List<SubcategoryDTO> subCategories = subCategoryService.getSubCategoriesByCategoryID(categoryId);
         Scanner scanner = new Scanner(System.in);
 
-
         int choice = -1;
 
         while (choice != 0){
@@ -35,7 +34,7 @@ public class SubCategorySelector {
             if (choice == 0){
                 return;
             } else if (choice > 0 && choice <= subCategories.size() ){
-                quiz.startQuiz(Long.valueOf(choice));
+                quiz.startQuiz(subCategories.get(choice - 1).getName());
             } else {
                 System.out.println("Invalid choice. Please select a valid subcategory.\n");
             }

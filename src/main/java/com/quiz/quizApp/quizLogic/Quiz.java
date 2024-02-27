@@ -13,9 +13,9 @@ import java.util.Scanner;
 public class Quiz {
     private final QuestionService questionService;
 
-    public void startQuiz(Long subcategoryId){
+    public void startQuiz(String subcategoryName){
         Scanner scanner = new Scanner(System.in);
-        List<QuestionDTO> questions = questionService.getQuestionsBySubcategoryId(subcategoryId);
+        List<QuestionDTO> questions = questionService.getQuestionsBySubcategoryName(subcategoryName);
         Collections.shuffle(questions);
 
 
@@ -42,7 +42,7 @@ public class Quiz {
                 correctAnswers++;
                 System.out.println("Correct!\n");
             } else {
-                System.out.println("Wrong! The correct answer is: " + question.getCorrectAnswer());
+                System.out.println("Wrong! The correct answer is: " + question.getCorrectAnswer() + "\n");
             }
 
         }

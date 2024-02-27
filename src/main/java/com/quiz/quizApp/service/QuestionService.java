@@ -34,12 +34,16 @@ public class QuestionService {
         return questionDTOS;
     }
 
+    @Transactional
     public List<QuestionDTO> getQuestionsBySubcategoryName(String name) {
-        List<Question> questions = questionRepository.findAllQuestionsBySubcategoryName(name);
+        List<Question> questions = questionRepository.findAllQuestionsBySubcategoryNameIgnoreCase(name);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
         for (Question question : questions) {
-
+            questionDTOS.add(convertToDTO(question));
+        }
+        return questionDTOS;
+    }
     @Transactional
     public List<QuestionDTO> getQuestionsBySubcategoryId(Long subCategoryId){
         List<Question> questions = questionRepository.findAllBySubcategoryId(subCategoryId);
