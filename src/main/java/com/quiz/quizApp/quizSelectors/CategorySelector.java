@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class CategorySelector {
 
     private final CategoryService categoryService;
+    private final SubCategorySelector subCategorySelector;
 
     public void displayCategories(){
         List<CategoryDTO> categories = categoryService.getCategories();
@@ -32,7 +33,7 @@ public class CategorySelector {
             if (choice == 0){
                 return;
             } else if (choice > 0 && choice <= categories.size()){
-                System.out.println("Select subcategories...");
+                subCategorySelector.displaySubCategories(Long.valueOf(choice));
             } else {
                 System.out.println("Invalid choice. Please select a valid category.");
                 System.out.println("");

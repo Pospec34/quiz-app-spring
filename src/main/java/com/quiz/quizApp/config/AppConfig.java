@@ -32,8 +32,8 @@ public class AppConfig{
     }
 
     @Bean
-    public CategorySelector categorySelector(CategoryService categoryService){
-        return new CategorySelector(categoryService);
+    public CategorySelector categorySelector(CategoryService categoryService, SubCategorySelector subCategorySelector){
+        return new CategorySelector(categoryService, subCategorySelector);
     }
 
     @Bean
