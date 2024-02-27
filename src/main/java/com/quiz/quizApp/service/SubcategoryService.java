@@ -1,8 +1,8 @@
 package com.quiz.quizApp.service;
 
-import com.quiz.quizApp.dto.CategoryDTO;
+
 import com.quiz.quizApp.dto.SubcategoryDTO;
-import com.quiz.quizApp.models.Category;
+
 import com.quiz.quizApp.models.Subcategory;
 import com.quiz.quizApp.repository.SubcategoryRepository;
 import lombok.AllArgsConstructor;
@@ -33,6 +33,19 @@ public class SubcategoryService {
         } else {
             return null;
         }
+    }
+
+    public List<SubcategoryDTO> getSubCategoriesByCategoryID(Long id){
+        List<Subcategory> subcategories = subcategoryRepository.findAllByCategoryId(id);
+        List<SubcategoryDTO> subcategoryDTOS = new ArrayList<>();
+
+        for (Subcategory subcategory : subcategories){
+            subcategoryDTOS.add(convertToDTO(subcategory));
+        }
+
+        return subcategoryDTOS;
+
+
     }
 
     private SubcategoryDTO convertToDTO(Subcategory subcategory) {

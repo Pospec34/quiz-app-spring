@@ -33,6 +33,16 @@ public class QuestionService {
         return questionDTOS;
     }
 
+    public List<QuestionDTO> getQuestionsBySubcategoryId(Long subCategoryId){
+        List<Question> questions = questionRepository.findAllBySubcategoryId(subCategoryId);
+        List<QuestionDTO> questionDTOS = new ArrayList<>();
+
+        for (Question question : questions){
+            questionDTOS.add(convertToDTO(question));
+        }
+        return questionDTOS;
+    }
+
     private QuestionDTO convertToDTO(Question question) {
         QuestionDTO dto = new QuestionDTO();
         dto.setQuestionID(question.getId());

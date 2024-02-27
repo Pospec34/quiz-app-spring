@@ -28,4 +28,9 @@ public class SubcategoryController {
         return subcategoryService.getSubcategoryByID(id);
     }
 
+    @GetMapping("/byCategoryId/{categoryId}")
+    public List<SubcategoryDTO> getSubcategoryByCategoryId(@PathVariable Long categoryId){
+        return subcategoryService.getSubCategoriesByCategoryID(categoryId);
+    }
+
 }
