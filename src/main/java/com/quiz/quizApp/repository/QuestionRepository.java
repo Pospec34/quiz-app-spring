@@ -13,4 +13,6 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
    List<Question> findAllBySubcategoryId(Long subCategoryId);
 
+   List<Question> findAllQuestionsBySubcategoryName(String name);
+
 }

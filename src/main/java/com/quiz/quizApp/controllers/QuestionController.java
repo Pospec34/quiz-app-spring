@@ -29,9 +29,14 @@ public class QuestionController {
         return questionService.getQuestionsByCategory(category);
     }
 
-    @GetMapping("/bySubCategoryId/{subCategoryId}")
-    public List<QuestionDTO> getQuestionsBySubCategoryId(@PathVariable Long subCategoryId){
-        return questionService.getQuestionsBySubcategoryId(subCategoryId);
+    @GetMapping("/bySubcategoryId/{subcategoryId}")
+    public List<QuestionDTO> getQuestionsBySubcategoryId(@PathVariable Long subcategoryId){
+        return questionService.getQuestionsBySubcategoryId(subcategoryId);
+    }
+
+    @GetMapping("/bySubcategoryName/{subcategoryName}")
+    public List<QuestionDTO> getQuestionsBySubcategoryName(@PathVariable String subcategoryName){
+        return questionService.getQuestionsBySubcategoryName(subcategoryName);
     }
 
 }
