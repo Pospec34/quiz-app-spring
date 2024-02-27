@@ -1,7 +1,6 @@
 package com.quiz.quizApp.dto;
 
 
-import com.quiz.quizApp.models.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ public class QuestionDTO {
     private Long questionID;
     private String category;
     private String subcategory;
-    private String question;
+    private String text;
     private String correctAnswer;
     private List<String> wrongAnswers;
 
