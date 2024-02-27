@@ -1,9 +1,15 @@
 package com.quiz.quizApp.ui;
 
+import com.quiz.quizApp.quizSelectors.CategorySelector;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Scanner;
 
+@RequiredArgsConstructor
 public class QuizUI {
     private Scanner scanner = new Scanner(System.in);
+
+    private final CategorySelector categorySelector;
 
     public void mainMenu(){
         while (true){
@@ -17,7 +23,7 @@ public class QuizUI {
             String choice = scanner.nextLine();
             switch (choice){
                 case "1":
-                    System.out.println("Starting...");
+                    categorySelector.displayCategories();
                     break;
                 case "2":
                     System.out.println("Not implemented yet...");
