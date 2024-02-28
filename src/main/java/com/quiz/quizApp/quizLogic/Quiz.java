@@ -12,6 +12,7 @@ import java.util.Scanner;
 @AllArgsConstructor
 public class Quiz {
     private final QuestionService questionService;
+    private final ScoreEvaluator scoreEvaluator;
 
     public void startQuiz(String subcategoryName){
         Scanner scanner = new Scanner(System.in);
@@ -46,6 +47,6 @@ public class Quiz {
             }
 
         }
-        System.out.println("Quiz finished!");
+        scoreEvaluator.evaluateScore(correctAnswers, questionNumber - 1);
     }
 }

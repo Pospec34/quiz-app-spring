@@ -28,7 +28,7 @@ public class SubCategorySelector {
             }
             System.out.println("\n0: Return to Categories selection");
 
-            System.out.printf("Enter your choice: ");
+            System.out.printf("Enter your choice: \n");
             choice = scanner.nextInt();
 
             if (choice == 0){

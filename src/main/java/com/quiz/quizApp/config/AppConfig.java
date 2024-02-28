@@ -1,6 +1,7 @@
 package com.quiz.quizApp.config;
 
 import com.quiz.quizApp.quizLogic.Quiz;
+import com.quiz.quizApp.quizLogic.ScoreEvaluator;
 import com.quiz.quizApp.quizSelectors.CategorySelector;
 import com.quiz.quizApp.quizSelectors.SubCategorySelector;
 import com.quiz.quizApp.repository.CategoryRepository;
@@ -38,8 +39,13 @@ public class AppConfig{
     }
 
     @Bean
-    public Quiz quiz(QuestionService questionService){
-        return new Quiz(questionService);
+    public ScoreEvaluator scoreEvaluator(){
+        return new ScoreEvaluator();
+    }
+
+    @Bean
+    public Quiz quiz(QuestionService questionService, ScoreEvaluator scoreEvaluator){
+        return new Quiz(questionService, scoreEvaluator);
     }
 
     @Bean
