@@ -46,6 +46,10 @@ public class Quiz {
                 System.out.println("Wrong! The correct answer is: " + question.getCorrectAnswer() + "\n");
             }
 
+            if (questionNumber == 11){
+                break;
+            }
+
         }
         scoreEvaluator.evaluateScore(correctAnswers, questionNumber - 1);
     }

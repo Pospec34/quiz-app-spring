@@ -16,7 +16,7 @@ public class QuizUI {
             System.out.println("\n*****Welcome to QUIZ 3000*****");
 
             System.out.println("1. Start quiz");
-            System.out.println("2. Create a new quiz");
+            System.out.println("2. Create a new quiz (yet to be implemented)");
             System.out.println("3. Quit");
             System.out.printf("Choose: ");
 
